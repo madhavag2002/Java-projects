@@ -41,8 +41,8 @@ public class WebSecurityConfig {
                         .permitAll()
                         .requestMatchers("/profile/**").authenticated()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/editor/**").hasAnyRole("ADMIN","EDITOR")
-                        .requestMatchers("/test").hasAuthority(Authorities.ACCESS_ADMIN_PANEL.getAuthority())) 
+                        .requestMatchers("/editor/**").hasAnyRole("ADMIN", "EDITOR")
+                        .requestMatchers("/test").hasAuthority(Authorities.ACCESS_ADMIN_PANEL.getAuthority()))
                 .formLogin(login -> login
                         .loginPage("/login")
                         .loginProcessingUrl("/login")
@@ -54,6 +54,7 @@ public class WebSecurityConfig {
                 .logout(logout -> logout
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/"))
+                .rememberMe(me -> me.rememberMeParameter("remember-me"))
                 .httpBasic(withDefaults());
                 
         

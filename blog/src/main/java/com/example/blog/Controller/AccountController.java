@@ -33,9 +33,10 @@ public class AccountController {
         return "register";
 
     }
+    //binding result check all the errors if any during registering and stores the error in result
     @PostMapping("/register")
     public String register_user(@Valid @ModelAttribute Account account, BindingResult result){
-        if (result.hasErrors()){
+        if (result.hasErrors()){       //if there is any error we redirect to register page displaying some msg 
             return "register";
         }
         
@@ -52,7 +53,11 @@ public class AccountController {
     {
        return "profile";
     }
-   
+    @GetMapping("/forget-password")
+    public String forget(Model model)
+    {
+       return "forget_password";
+    }
     
     
 }

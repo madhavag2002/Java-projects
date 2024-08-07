@@ -53,25 +53,36 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
         th:object="${account}"
         method="post">
         <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="email" name="email" class="form-control" th:field="*{email}" id="email" >
-          <br>
-          <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert alert-danger" role="alert">Email Error</p>
+          <!-- mentioning the type add some validations on the client side and further validations are added on server side in pojo file -->
           
+          <input type="email" name="email" class="form-control" th:field="*{email}" id="email" placeholder="Email" required >
+          <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert alert-danger" role="alert">Email Error</p>
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" th:field="*{password}" id="password">
+          <input type="password" class="form-control" th:field="*{password}" id="password" placeholder="Password" required>
+          <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="alert alert-danger" role="alert">password Error</p>
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Firstname</label>
-            <input type="text" class="form-control" th:field="*{firstname}" id="Firstname" >
-            
-          </div>
-        <!-- <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div> -->
+            <input type="text" class="form-control" th:field="*{firstname}" id="Firstname" placeholder="Firstname" required >
+            <p th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}" class="alert alert-danger" role="alert">firstname Error</p>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" th:field="*{lastname}" id="Lastname" placeholder="Lastname" required >
+          <p th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}" class="alert alert-danger" role="alert">lastname Error</p>
+        </div>
+        <div class="form-group">
+         
+          <input type="number" class="form-control" th:field="*{age}" id="formGroupExampleInput2" min="18" max="99" placeholder="Age" required>
+          <p th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="alert alert-danger" role="alert">Age Error</p>
+        </div>
+        <div class="form-group">
+          
+          <input type="date" class="form-control" th:id="Date" placeholder="Date">
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2">Another label</label>
+          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+        </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
